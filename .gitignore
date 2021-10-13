@@ -115,3 +115,8 @@ dmypy.json
 
 # Idea
 .idea/
+
+# Extra
+WorkArea/
+WorkArea/scratch.json
+WorkArea/scratchpad.py
