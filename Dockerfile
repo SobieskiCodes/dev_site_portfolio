@@ -7,13 +7,13 @@ RUN pip install django ptvsd
 ADD ./site-config.conf /etc/apache2/sites-available/000-default.conf ADD ./requirements.txt /var/www/html
 WORKDIR /var/www/html
 RUN pip install -r requirements.txt
-RUN chmod 664 /var/www/html/{ your-site-name }/db.sqlite3
-RUN chmod 775 /var/www/html/{ your-site-name }/{ your-site-name } RUN chmod 775 /var/www/html/{ your-site-name }/logs
-RUN chown :www-data /var/www/html/{ your-site-name }/db.sqlite3
-RUN chown :www-data /var/www/html/{ your-site-name }/{ your-site-name }
-RUN chown :www-data /var/www/html/{ your-site-name }/logs
+RUN chmod 664 /var/www/html/devsite/db.sqlite3
+RUN chmod 775 /var/www/html/devsite/devsite RUN chmod 775 /var/www/html/devsite/logs
+RUN chown :www-data /var/www/html/devsite/db.sqlite3
+RUN chown :www-data /var/www/html/devsite/devsite
+RUN chown :www-data /var/www/html/devsite/logs
 EXPOSE 80 3500
 CMD ["apache2ctl", "-D", "FOREGROUND"]
-RUN chmod 664 /var/www/html/{ your-site-name }/{ your-site-name }/db.sqlite3
-RUN chmod 775 /var/www/html/{ your-site-name }/{ your-site-name } RUN chown :www-data /var/www/html/{ your-site-name }/{ your-site-name }/db.sqlite3
-RUN chown :www-data /var/www/html/{ your-site-name }/{ your-site-name }
+RUN chmod 664 /var/www/html/devsite/devsite/db.sqlite3
+RUN chmod 775 /var/www/html/devsite/devsite RUN chown :www-data /var/www/html/devsite/devsite/db.sqlite3
+RUN chown :www-data /var/www/html/devsite/devsite
