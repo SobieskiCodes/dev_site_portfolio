@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title%}
+    | Aug % chance
+{% endblock %}
+{% block content %}
+{{ result }}
+<div id="AugCalc">
+    <form action="" method="post" id="AugChance">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit" id="AugSubmit">
+    </form>
+</div>
+
+
+<script>
+$( "#AugChance" ).submit(function( event ) {
+  event.preventDefault();
+  console.log('is this thing on?')
+    let posting = $.ajax({
+            url: "",
+            method: "POST",
+            data: $("#AugChance").serialize(),
+            headers:
+            {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            datatype: "json"
+        });
+      posting.done(function( data ) {
+          $('#id_Result').val(Number(Object.values(data)).toFixed(2));
+  });
+});
+</script>
+{{ Result }}
+{% endblock %}
